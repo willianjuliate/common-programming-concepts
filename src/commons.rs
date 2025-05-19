@@ -39,7 +39,8 @@ pub fn bloco() {
 
     println!("No início os valores são: X={X}, y={y}, z={z}");
 
-    {                           // bloco interno
+    {
+        // bloco interno
         const X: i32 = 555;
         let y = 666;
         let mut z = 777;
@@ -72,5 +73,165 @@ pub fn sombreamento() {
     println!("O valor de spaces2 é: {spaces2}");
     spaces2 = "qwerty"; // mesma variável com mesmo tipo
     println!("O valor de spaces2 é: {spaces2}");
+}
+
+pub fn tipo_escalar_numerico() {
+    println!("\nInicio do programa");
+    /* Tipos de Dados: Tipos Escalares		[3.2. Data Types: Scalar Types]
+
+    Baseado em:
+    The Rust Programming Language
+    by Steve Klabnik and Carol Nichols, with contributions from the Rust Community
+    This version of the text assumes you’re using Rust 1.67.1 (released 2023-02-09) or later
+    https://doc.rust-lang.org/stable/book/
+
+    */
+
+    // Velocidade máxima de qualquer veículo em metros por segundo
+    const _VELOCIDADE_MAXIMA: f64 = 200.0 * (1000.0 / 3600.0);
+
+    // Comprimento máximo de qualquer veículo em metros
+    // const COMPRIMENTO_MAXIMO = 22;
+
+    /*
+    Table 3-1: Integer Types in Rust
+
+    Length	Signed	Unsigned
+    8-bit	i8		u8
+    16-bit	i16		u16
+    32-bit	i32		u32
+    64-bit	i64		u64
+    128-bit	i128	u128
+    arch	isize	usize
+
+    Obs1: i32 é default para inteiros
+    Obs2: Em caso de overflow temos "panico na execução" (debug mode) ou "dá a volta" (release mode)
+    Obs3: Existem vários métodos na biblioteca padrão para lidar com overflow
+    Obs4: Existem dois tipos de ponto flutuante: f32 e f64 (default)
+    */
+
+    /*
+    Table 3-2: Integer Literals in Rust
+
+    Number literals		Example
+    Decimal				98_222
+    Hex					0xff
+    Octal				0o77
+    Binary				0b1111_0000
+    Byte (u8 only)		b'A'
+
+    Obs1: Ponto flutuante aceita  7.6e-2  ou  0.076
+    */
+
+    let _chassi: i32 = 123456; // identificação de um carro
+    let _acel_max: f64 = 3.0; // metros por segundo ao quadrado
+    let _acel_min: f64 = -10.0; // metros por segundo ao quadrado
+    //let vel_max: f32 = VELOCIDADE_MAXIMA;	//  as f32;	// metros por segundo
+    let comprimento: i32 = 4; // metros
+    let posicao_atual: f32 = -100.0; // metros do cruzamento
+    let vel_atual: f64 = 0.0; // metros por segundo
+    let acel_atual: f64 = 0.0; // metros por segundo ao quadrado
+
+    // adição
+    let sum = posicao_atual + 10.0;
+
+    // subtração
+    let difference = vel_atual - 4.3;
+
+    // multiplicação
+    let product = comprimento * 2; // pode 2.0 ???
+
+    // divisão
+    let quotient = acel_atual / 2.0;
+    let floored = 2 / 3; // truncado
+
+    // resto da divisão
+    let remainder = 43 % 5;
+
+    println!(
+        "sum: {sum}, diff: {difference}, prod: {product}, quotient: {quotient}, floored: {floored}, remainder: {remainder}"
+    );
+
+    // transformação de tipos
+    let xxx: f64 = 123.55;
+
+    //let yyy = xxx + 88;
+    //let yyy = xxx + 88f64;
+    //let yyy = xxx + 88 as f64;
+
+    //https://doc.rust-lang.org/std/primitive.f64.html
+    println!(
+        "trunc {}, round {}, ceil {}, floor {}",
+        xxx.trunc(),
+        xxx.round(),
+        xxx.ceil(),
+        xxx.floor()
+    );
+
+    println!("Alô numéricos!");
+}
+
+pub fn tipo_escalar_bool_char() {
+    let t = true;
+    let f = false;
+
+    let x = t && f;
+    let _y = t || !f;
+    let _z = 12 > 13;
+
+    let c = 'z';
+    let _c = 'z'; // sublinha elimina os warning
+    let _z: char = 'ℤ';
+
+    println!("bool: {x}, char {c}");
+}
+
+pub fn tipo_composto_tupla() {
+    println!("\nInicio do programa");
+    let tup1: (i32, f64, bool) = (500, 6.4, true);
+    let tup2 = (500, 6.5, 'z');
+
+    println!("Minha tupla tem 1:{tup1:?}, 2:{tup2:?}");
+
+    // desestruturação (destructuring) quebra a tupla em suas partes
+    let (a, b, c) = tup1;
+    println!("Minha tupla tem {a} - {b} - {c}");
+
+    // Pode acessar os campos usando indexadores
+    println!("Minha tupla tem: {} - {} - {}", tup1.0, tup1.1, tup1.2);
+
+    //Tupla vazia é chamada unit, representa um valor vazio
+    println!("Tupla vazia: {:?}", ());
+}
+
+pub fn tipo_composto_array() {
+    let _aa = [1, 2, 3, 4, 5, 6];
+    let meses = [
+        "Janeiro",
+        "Fevereiro",
+        "Março",
+        "Abril",
+        "Maio",
+        "Junho",
+        "Julho",
+        "Agosto",
+        "Setembro",
+        "Outubro", 
+        "Novembro",
+        "Dezembro"
+    ];
+
+    let _bb: [i32; 5] = [1, 2, 3, 4, 5];
+    let cc = [3; 5];
+    let dd = [3, 5];
+
+    println!("cc {cc:?}");
+    println!("dd {dd:?}");
+
+    println!("Elemento 2 do array 'meses' é: {:?}", meses[2]);
+
+    let errado = cc[11]; // Erro de compilação, Pânico detectado na execução!
+
+    println!("{errado:?}");
 
 }
