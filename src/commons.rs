@@ -205,6 +205,7 @@ pub fn tipo_composto_tupla() {
 }
 
 pub fn tipo_composto_array() {
+    println!("\nInicio do programa");
     let _aa = [1, 2, 3, 4, 5, 6];
     let meses = [
         "Janeiro",
@@ -216,9 +217,9 @@ pub fn tipo_composto_array() {
         "Julho",
         "Agosto",
         "Setembro",
-        "Outubro", 
+        "Outubro",
         "Novembro",
-        "Dezembro"
+        "Dezembro",
     ];
 
     let _bb: [i32; 5] = [1, 2, 3, 4, 5];
@@ -230,8 +231,52 @@ pub fn tipo_composto_array() {
 
     println!("Elemento 2 do array 'meses' é: {:?}", meses[2]);
 
-    let errado = cc[11]; // Erro de compilação, Pânico detectado na execução!
+    //let errado = cc[11]; // Erro de compilação, Pânico detectado na execução!
+    //println!("{errado:?}");
+}
 
-    println!("{errado:?}");
+/** FUNCTIONS */
+mod functions {
+    pub fn outra_function() {
+        println!("\nOutra função");
+    }
 
+    pub fn outra_function_parametros(x: i32) {
+        println!("\nOutra função com parametro {x}");
+    }
+
+    pub fn print_labeled_measurement(valor: f64, unidade: char) {
+        println!("A medida é: {valor}{unidade}");
+    }
+
+    pub fn soma(x: i32, y: i32) -> i32 {
+        x + y
+    }
+
+    pub fn somaret(x: i32, y: i32) -> i32 {
+        return x + y;
+    }
+}
+
+pub fn functions() {
+    functions::outra_function();
+    functions::outra_function_parametros(10);
+    functions::print_labeled_measurement(2.5, 'm');
+
+    println!("A soma {}", functions::soma(20, 20));
+    println!("A soma {}", functions::somaret(200, 150));
+
+    let y = {
+        let x = 3;
+        x + 1
+    };
+    
+    println!("sem ponto e virgula: {y}");
+
+    /*let y: () = {
+        let x = 3;
+        x + 19999;
+    }; */
+
+    //println!("sem ponto e virgula: {y}");
 }

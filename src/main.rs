@@ -10,4 +10,5 @@ fn main() {
     commons::tipo_escalar_bool_char();
     commons::tipo_composto_tupla();
     commons::tipo_composto_array();
+    commons::functions();   
 }
