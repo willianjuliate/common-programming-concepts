@@ -238,7 +238,7 @@ pub fn tipo_composto_array() {
 /** FUNCTIONS */
 mod functions {
     pub fn outra_function() {
-        println!("\nOutra função");
+        println!("Outra função");
     }
 
     pub fn outra_function_parametros(x: i32) {
@@ -259,6 +259,7 @@ mod functions {
 }
 
 pub fn functions() {
+    println!("\nInicio do programa");
     functions::outra_function();
     functions::outra_function_parametros(10);
     functions::print_labeled_measurement(2.5, 'm');
@@ -270,7 +271,7 @@ pub fn functions() {
         let x = 3;
         x + 1
     };
-    
+
     println!("sem ponto e virgula: {y}");
 
     /*let y: () = {
@@ -279,4 +280,118 @@ pub fn functions() {
     }; */
 
     //println!("sem ponto e virgula: {y}");
+}
+
+// Controle de Fluxo
+
+pub fn controle_de_fluxo() {
+    println!("\nInicio do programa");
+
+    let number = 3;
+    //Condições deve ser do tipo bool, não precisa de parênteses
+    if number < 5 {
+        println!("Condição verdadeira");
+    } else {
+        println!("Condição falsa");
+    }
+
+    // Cascata de ifs
+    if number % 4 == 0 {
+        println!("número é divisivel por 4");
+    } else if number % 3 == 0 {
+        println!("número é divisivel por 3");
+    } else if number % 2 == 0 {
+        println!("número é divisivel por 2");
+    } else {
+        println!("número não é divisivel por 4, 3 ou 2");
+    }
+
+    //Pode usar como expressão
+    let outro_number = if number == 0 { 0 } else { 99 };
+    println!("O valor do outro_number é: {outro_number}");
+
+}
+
+pub fn controle_de_fluxo_repeticao() {
+    println!("\nInicio do programa");
+
+    let mut number = 5;
+    println!("\n    Usando while");
+    while number != 0 {
+        println!("while {number}");
+        number = number - 1;
+    }
+
+    println!("\n    Usando for");
+    let arr: [i32; 5] = [10, 20, 30, 40, 50];
+    for e in arr {
+        println!("for {e}");        
+    }
+
+    println!("\n    Usando Range");
+    for num in 1..=3 {
+        println!("range {num}")
+    }
+
+    println!("\n    Usando Range Reverso");
+    for num in (1..=3).rev() {
+        println!("range rev {num}")
+    }
+
+}
+
+pub fn controle_de_fluxo_repeticao_loop() {
+    println!("\nInicio do programa");
+    let mut i = 0;
+
+    println!("\nloop: ");
+    loop {
+        i += 1;
+        if i % 2 == 0 {
+            continue;
+        }
+        println!("i {i}");
+        if i >= 10 {
+            break;
+        }
+    }
+
+    // loop como expressão
+    println!("\nloop com expressão: ");
+    let result = loop {
+        i += 100;
+        if i >= 100 {
+            break i * 2;
+        }
+    };
+    println!("\nResult: {result}");
+
+    //Labels em loops
+    println!("\nLabels em loops");
+    let mut contagem = 0;
+
+    'loop_externo: loop {
+        println!("contagem = {contagem}");
+        let mut faltam = 100;
+
+        loop {
+            println!("faltam = {faltam}");
+            if faltam == 97 {
+                break;
+            }
+
+            println!("contagem = {contagem}");
+            if contagem == 2 {
+                break 'loop_externo;
+            }
+
+            faltam -= 1;
+        }
+
+        println!("Incrementa contagem");
+        contagem += 1;
+    }
+
+    println!("Contagem final = {contagem}");
+
 }

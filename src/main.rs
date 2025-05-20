@@ -11,4 +11,7 @@ fn main() {
     commons::tipo_composto_tupla();
     commons::tipo_composto_array();
     commons::functions();   
+    commons::controle_de_fluxo();
+    commons::controle_de_fluxo_repeticao();
+    commons::controle_de_fluxo_repeticao_loop();
 }
